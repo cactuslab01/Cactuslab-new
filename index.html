@@ -11,105 +11,89 @@
         body { margin: 0; font-family: 'Jost', sans-serif; background-color: #050505; color: #e0e0e0; -webkit-font-smoothing: antialiased; overflow-x: hidden; letter-spacing: 0.5px; }
         h1, h2, h3, h4 { font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 4px; font-weight: 400; margin: 0; }
         
-        /* REFINED MARQUEE */
+        /* MARQUEE */
         .marquee { background: #080808; color: #C4A661; border-bottom: 1px solid #1a1a1a; padding: 10px 0; overflow: hidden; white-space: nowrap; font-size: 0.65rem; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; width: 100%; position: absolute; top: 0; z-index: 1000; }
         .marquee span { display: inline-block; animation: marquee 25s linear infinite; }
         .marquee span::after { content: " • FREE TESTER WITH EVERY 50ML • EXTRAIT DE PARFUM • CRAFTED IN LAB • COMPLIMENTARY SHIPPING • "; padding-left: 10px; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         
-        /* MINIMALIST HEADER WITH PERFECT CENTERING */
+        /* HEADER */
         .header { position: sticky; top: 0; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(15px); display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; z-index: 999; border-bottom: 1px solid #111; margin-top: 35px; }
         .header-left, .header-right { flex: 1; display: flex; align-items: center; }
         .header-right { justify-content: flex-end; gap: 20px; }
         .header-logo { flex: 0 1 auto; font-family: 'Cinzel', serif; font-size: 1.6rem; color: #C4A661; text-transform: uppercase; letter-spacing: 5px; text-align: center; font-weight: 500; }
         
-        /* MINIMALIST LINE ICONS (SVG) */
         .icon { width: 20px; height: 20px; stroke: #e0e0e0; stroke-width: 1.2; fill: none; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; transition: 0.3s; }
         .icon:hover { stroke: #C4A661; }
         .cart-icon { position: relative; display: flex; align-items: center; }
         .cart-badge { position: absolute; top: -5px; right: -8px; background: #C4A661; color: #000; font-size: 0.55rem; font-weight: 600; border-radius: 50%; padding: 2px 5px; font-family: 'Jost'; }
 
-        /* PARALLAX HERO */
+        /* SIDEBAR NAVIGATION */
+        .sidebar { position: fixed; top: 0; left: -100%; width: 85%; max-width: 300px; height: 100vh; background: #050505; z-index: 10001; transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1); border-right: 1px solid #1a1a1a; padding: 40px 25px; box-sizing: border-box; }
+        .sidebar.active { left: 0; }
+        .sidebar-logo { font-family: 'Cinzel'; color: #C4A661; font-size: 1.4rem; letter-spacing: 4px; margin-bottom: 50px; }
+        .sidebar-links { display: flex; flex-direction: column; gap: 30px; }
+        .sidebar-links a { color: #fff; text-decoration: none; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; font-family: 'Jost'; transition: 0.3s; cursor: pointer; }
+        .sidebar-links a:hover { color: #C4A661; padding-left: 10px; }
+
+        /* SEARCH OVERLAY */
+        .search-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(5,5,5,0.98); z-index: 10002; padding: 40px 20px; text-align: center; }
+        .search-input { width: 90%; max-width: 600px; background: transparent; border: none; border-bottom: 1px solid #C4A661; color: #fff; font-size: 1.5rem; font-family: 'Cinzel'; outline: none; padding: 10px; text-align: center; margin-top: 80px; }
+
+        /* HERO & PARALLAX */
         .parallax-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: url('1000165704.png') center/cover; z-index: -1; filter: brightness(0.6); }
-        
         .story-container { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; padding: 120px 20px 80px; background: linear-gradient(to bottom, rgba(5,5,5,0) 0%, rgba(5,5,5,0.7) 60%, rgba(5,5,5,1) 100%); }
         .hero-text h1 { font-size: 2.5rem; color: #fff; letter-spacing: 6px; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
-        .hero-text p { font-size: 0.8rem; letter-spacing: 5px; color: #C4A661; margin-top: 15px; font-family: 'Jost'; text-transform: uppercase; text-shadow: 1px 1px 5px rgba(0,0,0,0.8);}
-        .story-text { margin-top: 60px; max-width: 750px; color: #ddd; line-height: 2; font-size: 1rem; font-weight: 300; padding-bottom: 60px; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
+        .hero-text p { font-size: 0.8rem; letter-spacing: 5px; color: #C4A661; margin-top: 15px; font-family: 'Jost'; text-transform: uppercase; }
+        .story-text { margin-top: 60px; max-width: 750px; color: #ddd; line-height: 2; font-size: 1rem; font-weight: 300; padding-bottom: 60px; }
         
-        .section { padding: 80px 20px; max-width: 1200px; margin: auto; text-align: center; background-color: #050505; position: relative; z-index: 2; }
-        
-        /* LUXURY SWIPE CAROUSEL WITH FOCUS LOGIC */
+        /* CAROUSEL */
+        .section { padding: 80px 0; max-width: 1200px; margin: auto; text-align: center; background-color: #050505; position: relative; z-index: 2; }
         .swipe-hint { display: flex; justify-content: flex-end; align-items: center; gap: 8px; font-size: 0.65rem; color: #C4A661; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; padding-right: 20px; opacity: 0.9; }
-        .swipe-hint span { display: inline-block; animation: nudgeRight 1.5s infinite ease-in-out; font-size: 1rem; line-height: 0; }
+        .swipe-hint span { display: inline-block; animation: nudgeRight 1.5s infinite ease-in-out; }
         @keyframes nudgeRight { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
 
-        .collection-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 20px 20px; margin-top: 10px; scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; }
+        .collection-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 20px 20px; scrollbar-width: none; scroll-behavior: smooth; }
         .collection-carousel::-webkit-scrollbar { display: none; }
+        .collection-card { flex: 0 0 85%; scroll-snap-align: center; position: relative; cursor: pointer; overflow: hidden; background: #000; }
+        .collection-card img { width: 100%; height: 380px; object-fit: cover; filter: grayscale(60%) brightness(0.3); transform: scale(0.95); transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .collection-card h3 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 1.2rem; letter-spacing: 4px; opacity: 0.3; transition: 0.6s ease; }
         
-        .collection-card { flex: 0 0 85%; scroll-snap-align: center; position: relative; cursor: pointer; overflow: hidden; background: #000; border-top: 1px solid #1a1a1a; }
-        
-        /* HIDDEN/SWIPED AWAY STATE */
-        .collection-card img { width: 100%; height: 380px; object-fit: cover; filter: grayscale(60%) brightness(0.3); transform: scale(0.95); display: block; transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-        .collection-card h3 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 1.2rem; letter-spacing: 4px; text-shadow: 2px 2px 10px rgba(0,0,0,0.9); opacity: 0.3; transition: all 0.6s ease; }
-        
-        /* ACTIVE/CENTERED STATE (Triggered by our new JS engine) */
+        /* FOCUS CLASS */
         .collection-card.active img { filter: grayscale(0%) brightness(0.95); transform: scale(1.02); }
-        .collection-card.active h3 { opacity: 1; transform: translate(-50%, -50%) scale(1.1); text-shadow: 2px 2px 15px rgba(0,0,0,1); }
+        .collection-card.active h3 { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
         
-        /* LUXURY PRODUCT GRID */
-        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
-        .product-card { background: #080808; text-align: center; cursor: pointer; padding-bottom: 25px; border: 1px solid #111; transition: 0.4s ease; }
-        .product-card:hover { border-color: #333; }
-        .product-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: brightness(0.85); }
-        .product-card-info { padding: 25px 15px; }
-        .product-card-info h3 { font-size: 0.9rem; color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
-        .product-card-info p { font-size: 0.75rem; color: #777; margin: 0 0 15px 0; line-height: 1.6; }
-        .price { color: #C4A661; font-weight: 400; font-size: 0.85rem; letter-spacing: 1px; }
+        /* PRODUCT GRID */
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 40px; }
+        .product-card { background: #080808; text-align: center; padding-bottom: 20px; border: 1px solid #111; }
+        .product-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+        .product-card-info { padding: 15px; }
+        .product-card-info h3 { font-size: 0.8rem; color: #fff; margin-bottom: 5px; }
+        .product-card-info p { font-size: 0.65rem; color: #666; margin-bottom: 10px; }
+        .price { color: #C4A661; font-size: 0.8rem; }
         
-        /* DELICATE BUTTONS */
-        .btn { background: transparent; color: #C4A661; border: 1px solid #C4A661; padding: 14px; cursor: pointer; font-family: 'Jost', sans-serif; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 3px; width: 100%; margin-top: 15px; transition: 0.4s ease; }
+        .btn { background: transparent; color: #C4A661; border: 1px solid #C4A661; padding: 10px; cursor: pointer; font-family: 'Jost'; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 2px; width: 100%; margin-top: 10px; transition: 0.3s; }
         .btn:hover { background: #C4A661; color: #000; }
-        .btn-solid { background: #C4A661; color: #000; font-weight: 500; border: none; }
-        
-        /* SIDE CART */
-        .cart-drawer { position: fixed; top: 0; right: -100%; width: 90%; max-width: 400px; height: 100vh; background: #050505; z-index: 10000; transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); border-left: 1px solid #1a1a1a; display: flex; flex-direction: column; }
+        .btn-solid { background: #C4A661; color: #000; border: none; font-weight: 600; }
+
+        /* CART & OVERLAYS */
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 9999; overflow-y: auto; }
+        .overlay-content { padding: 20px 15px 60px; max-width: 1000px; margin: auto; }
+        .cart-drawer { position: fixed; top: 0; right: -100%; width: 90%; max-width: 400px; height: 100vh; background: #050505; z-index: 10000; transition: 0.5s; border-left: 1px solid #1a1a1a; display: flex; flex-direction: column; }
         .cart-drawer.open { right: 0; }
         .cart-header { padding: 30px 20px; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; }
-        .cart-header h2 { font-size: 1.2rem; color: #C4A661; }
-        .cart-close { font-size: 2.5rem; cursor: pointer; color: #555; line-height: 1; font-family: 'Jost'; font-weight: 200; transition: 0.3s; }
-        .cart-close:hover { color: #fff; }
         .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
-        .cart-item { display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid #111; padding-bottom: 20px; }
-        .cart-item img { width: 70px; height: 90px; object-fit: cover; border: 1px solid #222;}
-        .cart-item-details { flex: 1; text-align: left;}
-        .cart-item-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-family: 'Cinzel'; margin-bottom: 5px; }
-        .cart-item-price { color: #C4A661; font-size: 0.8rem; }
-        .qty-controls { display: flex; align-items: center; gap: 15px; margin-top: 12px; border: 1px solid #222; width: fit-content; padding: 4px 12px; font-size: 0.8rem; }
-        .qty-btn { background: none; border: none; color: #aaa; cursor: pointer; font-size: 1rem; padding: 0 5px; font-family: 'Jost'; }
-        .cart-footer { padding: 30px 20px; border-top: 1px solid #111; background: #080808; }
-        .cart-total { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;}
-        
-        /* SMOOTH WINDOW OVERLAYS */
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 9999; overflow-y: auto; color: #fafafa; animation: fadeOverlay 0.4s ease forwards; }
-        .overlay-content { padding: 30px 15px 60px; max-width: 1000px; margin: auto; animation: slideContent 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        
-        @keyframes fadeOverlay { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideContent { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        
-        /* HIGH-END FOOTER */
-        .footer { background: #050505; padding: 60px 20px 30px; text-align: left; font-size: 0.75rem; line-height: 2; color: #777; letter-spacing: 0.5px; position: relative; z-index: 2;}
-        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .footer h3 { color: #C4A661; font-size: 0.9rem; margin-bottom: 20px; letter-spacing: 3px; font-family: 'Cinzel'; }
-        .footer a { color: #777; text-decoration: none; display: block; transition: 0.3s; }
-        .footer a:hover { color: #fff; }
-        .footer-bottom { text-align: center; padding-top: 30px; margin-top: 40px; border-top: 1px solid #111; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; }
-        
-        .floating-cart-btn { position: fixed; bottom: 30px; right: 20px; background: #C4A661; color: #000; padding: 15px 25px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 20px rgba(196, 166, 97, 0.2); font-weight: 500; display: none; z-index: 9000; font-family: 'Jost', sans-serif; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;}
+        .cart-item { display: flex; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #111; padding-bottom: 15px; }
+        .cart-item img { width: 60px; height: 80px; object-fit: cover; }
+        .cart-footer { padding: 20px; border-top: 1px solid #111; background: #080808; }
+
+        .footer { background: #050505; padding: 60px 20px; text-align: left; font-size: 0.7rem; color: #555; position: relative; z-index: 2; border-top: 1px solid #111; }
+        .floating-cart-btn { position: fixed; bottom: 20px; right: 20px; background: #C4A661; color: #000; padding: 15px 20px; border-radius: 50px; cursor: pointer; z-index: 9000; font-family: 'Jost'; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; display: none; }
     </style>
 </head>
 <body>
-        <div class="marquee">
+
+    <div class="marquee">
         <span>FREE TESTER WITH EVERY 50ML • EXTRAIT DE PARFUM • CRAFTED IN LAB • COMPLIMENTARY SHIPPING</span>
     </div>
 
@@ -117,14 +101,11 @@
 
     <header class="header">
         <div class="header-left">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            <svg class="icon" onclick="toggleSidebar()" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </div>
-        
         <div class="header-logo">Cactus Lab</div>
-        
         <div class="header-right">
-            <svg class="icon" onclick="alert('Search feature coming soon!')" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            
+            <svg class="icon" onclick="toggleSearch()" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             <div class="cart-icon" onclick="toggleCart()">
                 <svg class="icon" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                 <span class="cart-badge" id="cartBadge">0</span>
@@ -132,22 +113,34 @@
         </div>
     </header>
 
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-logo">Menu</div>
+        <div class="sidebar-links">
+            <a onclick="menuNavigate('Summer')">Summer Perfumes</a>
+            <a onclick="menuNavigate('Winter')">Winter Perfumes</a>
+            <a onclick="menuNavigate('Gourmand')">Gourmand Perfumes</a>
+            <a onclick="menuNavigate('All')">All Perfumes</a>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay">
+        <span style="position:absolute; top:30px; right:30px; font-size:2rem; color:#555; cursor:pointer;" onclick="toggleSearch()">&times;</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="SEARCH FRAGRANCE..." onkeyup="handleSearch(event)">
+    </div>
+
     <div class="story-container">
         <div class="hero-text">
             <h1>Our Story</h1>
             <p>Uncovering the Unknown</p>
         </div>
         <p class="story-text">
-            Cactus Lab was born from a single desire: to uncover the unknown. I believed that the world's most captivating, niche fragrances shouldn't be locked behind impossible price tags. My motto has always been uncompromising style paired with true affordability. This house was built for my fellow enthusiasts—so that together, we can wear, explore, and enjoy the raw art of artisanal perfumery without limits.
+            Cactus Lab was born from a single desire: to uncover the unknown. I believed that the world's most captivating, niche fragrances shouldn't be locked behind impossible price tags. My motto has always been uncompromising style paired with true affordability.
         </p>
     </div>
 
-    <div class="section" style="padding-left: 0; padding-right: 0;">
-        <h2 style="color: #C4A661; margin-bottom: 5px;">The Curations</h2>
-        <p style="color: #666; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px;">Discover our artisanal extrait formulations.</p>
-        
+    <div class="section">
+        <h2 style="color: #C4A661; margin-bottom: 5px; font-size: 1.2rem;">The Curations</h2>
         <div class="swipe-hint">Swipe <span>⟶</span></div>
-
         <div class="collection-carousel">
             <div class="collection-card" onclick="openCategory('Summer')">
                 <img src="1000165638.png" alt="Summer">
@@ -158,7 +151,7 @@
                 <h3>Winter</h3>
             </div>
             <div class="collection-card" onclick="openCategory('Gourmand')">
-                <img src="output.jpg" alt="Gourmand">
+                <img src="output.jpg?v=1" alt="Gourmand">
                 <h3>Gourmand</h3>
             </div>
         </div>
@@ -166,15 +159,9 @@
 
     <div class="overlay" id="categoryModal">
         <div class="header" style="margin-top:0; position:relative; border:none; padding: 15px 25px;">
-            <div class="header-left">
-                <span style="font-size: 2rem; cursor:pointer; font-weight: 200; line-height: 1;" onclick="closeOverlay('categoryModal')">←</span>
-            </div>
-            <h2 id="categoryTitle" style="color: #C4A661; font-size: 1.2rem; flex: 0 1 auto;">Collection</h2>
-            <div class="header-right">
-                <div class="cart-icon" onclick="toggleCart()">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                </div>
-            </div>
+            <span style="font-size: 1.5rem; cursor:pointer;" onclick="closeOverlay('categoryModal')">←</span>
+            <h2 id="categoryTitle" style="color: #C4A661; font-size: 1rem;">Collection</h2>
+            <div></div>
         </div>
         <div class="overlay-content">
             <div class="product-grid" id="categoryGrid"></div>
@@ -183,226 +170,146 @@
 
     <div class="cart-drawer" id="cartDrawer">
         <div class="cart-header">
-            <h2>Your Bag</h2>
-            <span class="cart-close" onclick="toggleCart()">&times;</span>
+            <h2 style="font-size:1rem; color:#C4A661;">Your Bag</h2>
+            <span style="font-size:1.5rem; cursor:pointer;" onclick="toggleCart()">&times;</span>
         </div>
-        <div class="cart-items" id="cartItemsContainer">
-            <p style="text-align:center; color:#555; margin-top:50px; font-style: italic;">Your bag is empty.</p>
-        </div>
+        <div class="cart-items" id="cartItemsContainer"></div>
         <div class="cart-footer">
-            <div class="cart-total">
-                <span style="font-family: 'Cinzel';">Total</span>
-                <span style="color:#C4A661; font-family: 'Jost'; font-weight: 400;" id="cartTotalDisplay">₹0</span>
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                <span>Total</span><span id="cartTotalDisplay">₹0</span>
             </div>
-            <button class="btn btn-solid" onclick="checkout()">Checkout via WhatsApp</button>
+            <button class="btn btn-solid" onclick="checkout()">WhatsApp Checkout</button>
         </div>
     </div>
 
-    <div id="cartOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9998; backdrop-filter: blur(5px);" onclick="toggleCart()"></div>
+    <div id="cartOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9998;" onclick="closeAll()"></div>
 
-    <div class="floating-cart-btn" id="cartBtn" onclick="toggleCart()">
-        View Bag (<span id="cartCount">0</span>)
-    </div>
+    <div class="floating-cart-btn" id="cartBtn" onclick="toggleCart()">View Bag (<span id="cartCount">0</span>)</div>
 
     <footer class="footer">
-        <div class="footer-grid">
-            <div>
-                <h3>At Cactus Lab</h3>
-                <a href="#">Our Story</a>
-                <a href="#">The Lab Values</a>
-                <a href="#">Ingredients & Sourcing</a>
-            </div>
-            <div>
-                <h3>Client Care</h3>
-                <a href="#">Contact Us</a>
-                <a href="#">Shipping & Returns</a>
-                <a href="#">Track Order</a>
-                <a href="#">FAQs</a>
-            </div>
-        </div>
-        <div style="margin-top: 40px;">
-            <h3 style="margin-bottom: 10px;">Contact</h3>
-            <p>Email: support@cactuslab.com<br>Phone: +91 88194 996XX<br>Mumbai, India</p>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 CACTUS LAB PERFUMES. ALL RIGHTS RESERVED.
-        </div>
-                </footer>
-                    <script>
-        // --- NEW FOCUS TRACKER ENGINE ---
-        document.addEventListener("DOMContentLoaded", function() {
-            const carousel = document.querySelector('.collection-carousel');
-            const cards = document.querySelectorAll('.collection-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    // If the card is in the center of the screen, light it up!
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    } else {
-                        // If it's swiped away, dim it down!
-                        entry.target.classList.remove('active');
-                    }
-                });
-            }, {
-                root: carousel,
-                threshold: 0.55 // The card must be 55% visible to become the active focus
-            });
+        <p>&copy; 2026 CACTUS LAB PERFUMES. MUMBAI, INDIA.</p>
+    </footer>
 
-            cards.forEach(card => observer.observe(card));
-        });
-
-        // --- ORIGINAL SHOPPING ENGINE ---
+    <script>
+        // --- DATA ---
         const perfumes = {
             Summer: [
-                { id: 's1', name: 'Oceania', price: 1900, desc: 'Sea Spray, Bergamot, Water Lily.', img: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=600&auto=format&fit=crop' },
-                { id: 's2', name: 'Bleu de Chanel', price: 2100, desc: 'Lemon Zest, Ginger, Cedarwood.', img: 'https://images.unsplash.com/photo-1523293115678-d2900f505161?q=80&w=600&auto=format&fit=crop' },
-                { id: 's3', name: 'Summer Hammer', price: 1900, desc: 'Coconut Water, Mango, Woods.', img: 'https://images.unsplash.com/photo-1595425970377-c9703c48657a?q=80&w=600&auto=format&fit=crop' }
+                { name: 'Oceania', price: 1900, desc: 'Sea Spray, Bergamot.', img: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400' },
+                { name: 'Summer Hammer', price: 1900, desc: 'Mango, Coconut.', img: 'https://images.unsplash.com/photo-1595425970377-c9703c48657a?w=400' }
             ],
             Winter: [
-                { id: 'w1', name: 'Most Wanted', price: 2400, desc: 'Cardamom, Black Amber, Leather.', img: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?q=80&w=600&auto=format&fit=crop' },
-                { id: 'w2', name: 'Althair', price: 2200, desc: 'Mountain Air, Juniper, Vanilla.', img: 'https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?q=80&w=600&auto=format&fit=crop' },
-                { id: 'w3', name: 'Reserve Prive', price: 2600, desc: 'Aged Scotch, Smoke, Patchouli.', img: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=600&auto=format&fit=crop' }
+                { name: 'Most Wanted', price: 2400, desc: 'Amber, Leather.', img: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=400' },
+                { name: 'Althair', price: 2200, desc: 'Vanilla, Juniper.', img: 'https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?w=400' }
             ],
             Gourmand: [
-                { id: 'g1', name: 'Amore Cafe', price: 1900, desc: 'Roasted Coffee, Biscotti, Vanilla.', img: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?q=80&w=600&auto=format&fit=crop' },
-                { id: 'g2', name: 'Arabians Tonka', price: 2500, desc: 'Saffron, Dates, Tonka Bean, Oud.', img: 'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?q=80&w=600&auto=format&fit=crop' }
+                { name: 'Amore Cafe', price: 1900, desc: 'Coffee, Vanilla.', img: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400' }
             ]
         };
 
         let cart = {};
 
-        function openCategory(category) {
-            document.getElementById('categoryTitle').innerText = category;
-            let grid = document.getElementById('categoryGrid');
-            grid.innerHTML = ''; 
+        // --- NAVIGATION & UI ---
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('cartOverlay').style.display = document.getElementById('sidebar').classList.contains('active') ? 'block' : 'none';
+        }
 
-            perfumes[category].forEach(p => {
+        function toggleSearch() {
+            const s = document.getElementById('searchOverlay');
+            s.style.display = (s.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function toggleCart() {
+            const d = document.getElementById('cartDrawer');
+            d.classList.toggle('open');
+            document.getElementById('cartOverlay').style.display = d.classList.contains('open') ? 'block' : 'none';
+            renderCart();
+        }
+
+        function closeAll() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('cartDrawer').classList.remove('open');
+            document.getElementById('cartOverlay').style.display = 'none';
+        }
+
+        function menuNavigate(type) {
+            closeAll();
+            type === 'All' ? openAllPerfumes() : openCategory(type);
+        }
+
+        // --- DISPLAY LOGIC ---
+        function openCategory(cat) {
+            document.getElementById('categoryTitle').innerText = cat;
+            renderGrid(perfumes[cat]);
+            document.getElementById('categoryModal').style.display = 'block';
+        }
+
+        function openAllPerfumes() {
+            document.getElementById('categoryTitle').innerText = "Full Collection";
+            let all = [];
+            Object.values(perfumes).forEach(c => all = all.concat(c));
+            renderGrid(all);
+            document.getElementById('categoryModal').style.display = 'block';
+        }
+
+        function renderGrid(list) {
+            let grid = document.getElementById('categoryGrid');
+            grid.innerHTML = '';
+            list.forEach(p => {
                 grid.innerHTML += `
                     <div class="product-card">
-                        <img src="${p.img}" alt="${p.name}">
+                        <img src="${p.img}">
                         <div class="product-card-info">
                             <h3>${p.name}</h3>
                             <p>${p.desc}</p>
                             <div class="price">₹${p.price}</div>
-                            <button class="btn" onclick="addToCart('${p.name}', ${p.price}, '${p.img}')">Add to Bag</button>
+                            <button class="btn" onclick="addToCart('${p.name}', ${p.price}, '${p.img}')">Add</button>
                         </div>
-                    </div>
-                `;
+                    </div>`;
             });
-
-            document.getElementById('categoryModal').style.display = 'block';
-            window.scrollTo(0,0);
         }
 
-        function closeOverlay(id) {
-            document.getElementById(id).style.display = 'none';
-        }
+        function closeOverlay(id) { document.getElementById(id).style.display = 'none'; }
 
-        function toggleCart() {
-            const drawer = document.getElementById('cartDrawer');
-            const overlay = document.getElementById('cartOverlay');
-            if (drawer.classList.contains('open')) {
-                drawer.classList.remove('open');
-                overlay.style.display = 'none';
-            } else {
-                drawer.classList.add('open');
-                overlay.style.display = 'block';
-                renderCart();
-            }
-        }
-
+        // --- SHOPPING LOGIC ---
         function addToCart(name, price, img) {
-            if (cart[name]) {
-                cart[name].qty += 1;
-            } else {
-                cart[name] = { price: price, qty: 1, img: img };
-            }
+            cart[name] ? cart[name].qty++ : cart[name] = { price, img, qty: 1 };
             updateBadge();
-            toggleCart(); 
-        }
-
-        function updateQty(name, change) {
-            if (cart[name]) {
-                cart[name].qty += change;
-                if (cart[name].qty <= 0) {
-                    delete cart[name];
-                }
-                updateBadge();
-                renderCart();
-            }
+            toggleCart();
         }
 
         function updateBadge() {
-            let totalItems = 0;
-            for (let item in cart) { totalItems += cart[item].qty; }
-            document.getElementById('cartBadge').innerText = totalItems;
-            
-            // Show/hide floating button
-            const floatingBtn = document.getElementById('cartBtn');
-            if(totalItems > 0) {
-                floatingBtn.style.display = 'block';
-                document.getElementById('cartCount').innerText = totalItems;
-            } else {
-                floatingBtn.style.display = 'none';
-            }
+            let count = Object.values(cart).reduce((a, b) => a + b.qty, 0);
+            document.getElementById('cartBadge').innerText = count;
+            document.getElementById('cartBtn').style.display = count > 0 ? 'block' : 'none';
+            document.getElementById('cartCount').innerText = count;
         }
 
         function renderCart() {
-            let container = document.getElementById('cartItemsContainer');
+            let cont = document.getElementById('cartItemsContainer');
             let total = 0;
-            container.innerHTML = '';
-
-            if (Object.keys(cart).length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#555; margin-top:50px; font-style: italic;">Your bag is empty.</p>';
-                document.getElementById('cartTotalDisplay').innerText = "₹0";
-                return;
-            }
-
-            for (let name in cart) {
+            cont.innerHTML = '';
+            Object.keys(cart).forEach(name => {
                 let item = cart[name];
-                let itemTotal = item.price * item.qty;
-                total += itemTotal;
-
-                container.innerHTML += `
-                    <div class="cart-item">
-                        <img src="${item.img}" alt="${name}">
-                        <div class="cart-item-details">
-                            <div class="cart-item-title">${name}</div>
-                            <div class="cart-item-price">₹${item.price}</div>
-                            <div class="qty-controls">
-                                <button class="qty-btn" onclick="updateQty('${name}', -1)">-</button>
-                                <span>${item.qty}</span>
-                                <button class="qty-btn" onclick="updateQty('${name}', 1)">+</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
+                total += item.price * item.qty;
+                cont.innerHTML += `<div class="cart-item"><img src="${item.img}"><div>${name}<br>₹${item.price} x ${item.qty}</div></div>`;
+            });
             document.getElementById('cartTotalDisplay').innerText = "₹" + total;
         }
 
         function checkout() {
-            if (Object.keys(cart).length === 0) {
-                alert("Your bag is empty!");
-                return;
-            }
-            
-            let phoneNumber = "9188194996"; 
-            let message = "Cactus Lab Order:\n\n";
-            let total = 0;
-            
-            for (let name in cart) {
-                let item = cart[name];
-                message += `${item.qty}x ${name} (₹${item.price * item.qty})\n`;
-                total += (item.price * item.qty);
-            }
-            
-            message += `\nTotal Estimate: ₹${total}\n\nPlease confirm my order.`;
-            
-            let encodedMessage = encodeURIComponent(message);
-            window.open("https://wa.me/" + phoneNumber + "?text=" + encodedMessage, '_blank');
+            let msg = "Cactus Lab Order:\n";
+            Object.keys(cart).forEach(n => msg += `${cart[n].qty}x ${n}\n`);
+            window.open("https://wa.me/9188194996?text=" + encodeURIComponent(msg));
         }
+
+        function handleSearch(e) { if(e.key === 'Enter') { openAllPerfumes(); toggleSearch(); } }
+
+        // --- FOCUS OBSERVER ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); else e.target.classList.remove('active'); });
+        }, { threshold: 0.6 });
+        document.querySelectorAll('.collection-card').forEach(c => observer.observe(c));
     </script>
 </body>
 </html>
