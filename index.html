@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cactus Lab | Extrait de Parfum</title>
+    <style>
+        /* --- LUXURY FONT IMPORTS --- */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Jost:wght@300;400;500&display=swap');
+        
+        body { margin: 0; font-family: 'Jost', sans-serif; background-color: #050505; color: #e0e0e0; -webkit-font-smoothing: antialiased; overflow-x: hidden; letter-spacing: 0.5px; }
+        h1, h2, h3, h4 { font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 4px; font-weight: 400; margin: 0; }
+        
+        /* --- MARQUEE --- */
+        .marquee { background: #080808; color: #C4A661; border-bottom: 1px solid #1a1a1a; padding: 10px 0; overflow: hidden; white-space: nowrap; font-size: 0.65rem; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; width: 100%; position: absolute; top: 0; z-index: 1000; }
+        .marquee span { display: inline-block; animation: marquee 25s linear infinite; }
+        .marquee span::after { content: " • FREE TESTER WITH EVERY 50ML • EXTRAIT DE PARFUM • CRAFTED IN LAB • COMPLIMENTARY SHIPPING • "; padding-left: 10px; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        
+        /* --- HEADER (Fixed Side-by-Side Icons) --- */
+        .header { position: sticky; top: 0; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(15px); display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; z-index: 999; border-bottom: 1px solid #111; margin-top: 35px; }
+        .header-left, .header-right { flex: 1; display: flex; align-items: center; }
+        .header-right { justify-content: flex-end; gap: 20px; } /* Gap ensures side-by-side spacing */
+        .header-logo { flex: 0 1 auto; font-family: 'Cinzel', serif; font-size: 1.6rem; color: #C4A661; text-transform: uppercase; letter-spacing: 5px; text-align: center; font-weight: 500; }
+        
+        .icon { width: 22px; height: 22px; stroke: #e0e0e0; stroke-width: 1.2; fill: none; cursor: pointer; transition: 0.3s; }
+        .icon:hover { stroke: #C4A661; }
+        .cart-icon { position: relative; display: flex; align-items: center; }
+        .cart-badge { position: absolute; top: -5px; right: -8px; background: #C4A661; color: #000; font-size: 0.55rem; font-weight: 600; border-radius: 50%; padding: 2px 5px; }
+
+        /* --- SIDEBAR (Simplified for Ease) --- */
+        .sidebar { position: fixed; top: 0; left: -100%; width: 85%; max-width: 300px; height: 100vh; background: #050505; z-index: 10001; transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1); border-right: 1px solid #1a1a1a; padding: 60px 25px; box-sizing: border-box; }
+        .sidebar.active { left: 0; }
+        .sidebar-links { display: flex; flex-direction: column; gap: 25px; }
+        .sidebar-links a { color: #fff; text-decoration: none; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        .sidebar-links a:hover { color: #C4A661; padding-left: 10px; }
+
+        /* --- SEARCH OVERLAY --- */
+        .search-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(5,5,5,0.98); z-index: 10002; padding: 40px 20px; text-align: center; }
+        .search-input { width: 90%; max-width: 600px; background: transparent; border: none; border-bottom: 1px solid #C4A661; color: #fff; font-size: 1.5rem; font-family: 'Cinzel'; outline: none; padding: 10px; text-align: center; margin-top: 80px; }
+
+        /* --- HERO & PARALLAX --- */
+        .parallax-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: url('1000165704.png') center/cover; z-index: -1; filter: brightness(0.6); }
+        .story-container { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; padding: 120px 20px 80px; background: linear-gradient(to bottom, rgba(5,5,5,0) 0%, rgba(5,5,5,0.7) 60%, rgba(5,5,5,1) 100%); }
+        .hero-text h1 { font-size: 2.5rem; color: #fff; letter-spacing: 6px; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .hero-text p { font-size: 0.8rem; letter-spacing: 5px; color: #C4A661; margin-top: 15px; text-transform: uppercase; }
+        .story-text { margin-top: 60px; max-width: 750px; color: #ddd; line-height: 2; font-size: 1rem; font-weight: 300; padding-bottom: 60px; }
+        
+        /* --- CAROUSEL --- */
+        .section { padding: 80px 0; max-width: 1200px; margin: auto; text-align: center; background-color: #050505; position: relative; z-index: 2; }
+        .swipe-hint { display: flex; justify-content: flex-end; align-items: center; gap: 8px; font-size: 0.65rem; color: #C4A661; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; padding-right: 20px; }
+        .collection-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 20px 20px; scrollbar-width: none; scroll-behavior: smooth; }
+        .collection-carousel::-webkit-scrollbar { display: none; }
+        .collection-card { flex: 0 0 85%; scroll-snap-align: center; position: relative; cursor: pointer; overflow: hidden; background: #000; }
+        .collection-card img { width: 100%; height: 380px; object-fit: cover; filter: grayscale(60%) brightness(0.3); transform: scale(0.95); transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .collection-card h3 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 1.2rem; letter-spacing: 4px; opacity: 0.3; transition: 0.6s ease; }
+        .collection-card.active img { filter: grayscale(0%) brightness(0.95); transform: scale(1.02); }
+        .collection-card.active h3 { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        
+        /* --- PRODUCT GRID --- */
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 40px; }
+        .product-card { background: #080808; text-align: center; padding-bottom: 20px; border: 1px solid #111; }
+        .product-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+        .btn { background: transparent; color: #C4A661; border: 1px solid #C4A661; padding: 10px; cursor: pointer; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 2px; width: 80%; margin: 10px auto; display: block; }
+
+        /* --- OVERLAYS & CART --- */
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 9999; overflow-y: auto; }
+        .overlay-content { padding: 40px 25px 80px; max-width: 800px; margin: auto; line-height: 1.8; }
+        .cart-drawer { position: fixed; top: 0; right: -100%; width: 90%; max-width: 400px; height: 100vh; background: #050505; z-index: 10000; transition: 0.5s; border-left: 1px solid #1a1a1a; display: flex; flex-direction: column; }
+        .cart-drawer.open { right: 0; }
+        .cart-header { padding: 30px 20px; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; }
+        .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
+        .cart-item { display: flex; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #111; padding-bottom: 15px; font-size: 0.8rem; }
+        .cart-item img { width: 50px; height: 70px; object-fit: cover; }
+        .cart-footer { padding: 20px; border-top: 1px solid #111; background: #080808; }
+        #cartOverlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9998; }
+
+        /* --- FOOTER (Navigation Area) --- */
+        .footer { background: #050505; padding: 80px 25px; border-top: 1px solid #111; position: relative; z-index: 2; }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { color: #666; font-size: 0.7rem; margin-bottom: 20px; letter-spacing: 2px; }
+        .footer-col a { display: block; color: #fff; text-decoration: none; font-size: 0.85rem; margin-bottom: 12px; text-transform: uppercase; cursor: pointer; }
+        .footer-col a:hover { color: #C4A661; }
+        .footer-bottom { border-top: 1px solid #111; padding-top: 30px; font-size: 0.65rem; color: #444; text-align: center; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <div class="marquee"><span>FREE TESTER WITH EVERY 50ML • EXTRAIT DE PARFUM • CRAFTED IN LAB • COMPLIMENTARY SHIPPING</span></div>
+    <div class="parallax-bg"></div>
+
+    <header class="header">
+        <div class="header-left"><svg class="icon" onclick="toggleSidebar()" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 12h18M3 6h18M3 18h18" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="header-logo">Cactus Lab</div>
+        <div class="header-right">
+            <svg class="icon" onclick="toggleSearch()" viewBox="0 0 24 24" stroke="currentColor"><circle cx="11" cy="11" r="8" stroke-width="1.5"/><path d="M21 21l-4.35-4.35" stroke-width="1.5"/></svg>
+            <div class="cart-icon" onclick="toggleCart()">
+                <svg class="icon" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" stroke-width="1.5"/><path d="M16 10a4 4 0 0 1-8 0" stroke-width="1.5"/></svg>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-links">
+            <a onclick="menuNavigate('Summer')">Summer Perfumes</a>
+            <a onclick="menuNavigate('Winter')">Winter Perfumes</a>
+            <a onclick="menuNavigate('Gourmand')">Gourmand Perfumes</a>
+            <a onclick="menuNavigate('All')">All Perfumes</a>
+        </div>
+    </div>
+
+    <div class="story-container">
+        <div class="hero-text"><h1>Our Story</h1><p>Uncovering the Unknown</p></div>
+        <p class="story-text">Cactus Lab was born from a single desire: to uncover the unknown. High-end niche fragrances, crafted for those who refuse to be ordinary.</p>
+    </div>
+
+    <div class="section">
+        <h2 style="color: #C4A661; margin-bottom: 25px; font-size: 1.2rem;">The Curations</h2>
+        <div class="swipe-hint">Swipe <span>⟶</span></div>
+        <div class="collection-carousel">
+            <div class="collection-card" onclick="openCategory('Summer')"><img src="1000165638.png" alt="Summer"><h3>Summer</h3></div>
+            <div class="collection-card" onclick="openCategory('Winter')"><img src="IMG_20260313_221823.png" alt="Winter"><h3>Winter</h3></div>
+            <div class="collection-card" onclick="openCategory('Gourmand')"><img src="output.jpg?v=1" alt="Gourmand"><h3>Gourmand</h3></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>At Cactus Lab</h4>
+                <a onclick="openInfo('about')">Our Story</a>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Care</h4>
+                <a onclick="openInfo('returns')">Return & Refund</a>
+                <a onclick="openInfo('contact')">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 CACTUS LAB PERFUMES. MUMBAI, INDIA.
+        </div>
+    </footer>
+
+    <div class="overlay" id="infoOverlay">
+        <div class="header" style="margin-top:0; border:none; padding: 15px 25px;"><span onclick="closeOverlay('infoOverlay')" style="font-size:1.5rem; cursor:pointer;">←</span><h2 id="infoTitle" style="color:#C4A661; font-size:0.9rem;"></h2><div></div></div>
+        <div class="overlay-content" id="infoContent"></div>
+    </div>
+
+    <div class="overlay" id="categoryModal">
+        <div class="header" style="margin-top:0; border:none; padding: 15px 25px;"><span onclick="closeOverlay('categoryModal')" style="font-size:1.5rem; cursor:pointer;">←</span><h2 id="categoryTitle" style="color:#C4A661; font-size:0.9rem;"></h2><div></div></div>
+        <div class="overlay-content"><div class="product-grid" id="categoryGrid"></div></div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay">
+        <span onclick="toggleSearch()" style="position:absolute; top:30px; right:30px; font-size:2rem; color:#555; cursor:pointer;">&times;</span>
+        <input type="text" class="search-input" placeholder="SEARCH FRAGRANCE..." onkeyup="handleSearch(event)">
+    </div>
+
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header"><h3>Your Bag</h3><span onclick="toggleCart()" style="font-size:1.5rem; cursor:pointer;">&times;</span></div>
+        <div class="cart-items" id="cartItemsContainer"></div>
+        <div class="cart-footer">
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px;"><span>Total</span><span id="cartTotalDisplay">₹0</span></div>
+            <button class="btn" style="background:#C4A661; color:#000; width:100%;" onclick="checkout()">WhatsApp Checkout</button>
+        </div>
+    </div>
+
+    <div id="cartOverlay" onclick="closeAll()"></div>
+
+    <script>
+        const perfumes = {
+            Summer: [{ name: 'Oceania', price: 1900, img: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400' }],
+            Winter: [{ name: 'Most Wanted', price: 2400, img: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=400' }],
+            Gourmand: [{ name: 'Amore Cafe', price: 1900, img: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400' }]
+        };
+
+        const pages = {
+            about: { title: "Our Story", content: "<h2>Crafted in Lab</h2><p>Cactus Lab creates extrait de parfum that lasts. We focus on niche DNA with maximum projection.</p>" },
+            returns: { title: "Returns", content: "<h2>Policies</h2><p>Report damages within 48h. No returns on opened items.</p>" },
+            contact: { title: "Contact", content: "<h2>Connect</h2><p>WhatsApp: +91 88194996<br>Instagram: @CactusLab</p>" }
+        };
+
+        let cart = {};
+
+        function toggleSidebar() { 
+            const s = document.getElementById('sidebar');
+            s.classList.toggle('active');
+            document.getElementById('cartOverlay').style.display = s.classList.contains('active') ? 'block' : 'none';
+        }
+
+        function toggleCart() {
+            const d = document.getElementById('cartDrawer');
+            d.classList.toggle('open');
+            document.getElementById('cartOverlay').style.display = d.classList.contains('open') ? 'block' : 'none';
+            renderCart();
+        }
+
+        function toggleSearch() {
+            const s = document.getElementById('searchOverlay');
+            s.style.display = (s.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function closeAll() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('cartDrawer').classList.remove('open');
+            document.getElementById('cartOverlay').style.display = 'none';
+        }
+
+        function openInfo(slug) {
+            closeAll();
+            document.getElementById('infoTitle').innerText = pages[slug].title;
+            document.getElementById('infoContent').innerHTML = pages[slug].content;
+            document.getElementById('infoOverlay').style.display = 'block';
+        }
+
+        function menuNavigate(type) {
+            closeAll();
+            type === 'All' ? openAllPerfumes() : openCategory(type);
+        }
+
+        function openCategory(cat) {
+            document.getElementById('categoryTitle').innerText = cat;
+            renderGrid(perfumes[cat]);
+            document.getElementById('categoryModal').style.display = 'block';
+        }
+
+        function openAllPerfumes() {
+            document.getElementById('categoryTitle').innerText = "Full Collection";
+            let all = [];
+            Object.values(perfumes).forEach(c => all = [...all, ...c]);
+            renderGrid(all);
+            document.getElementById('categoryModal').style.display = 'block';
+        }
+
+        function renderGrid(list) {
+            let grid = document.getElementById('categoryGrid');
+            grid.innerHTML = '';
+            list.forEach(p => {
+                grid.innerHTML += `<div class="product-card"><img src="${p.img}"><h3>${p.name}</h3><div class="price">₹${p.price}</div><button class="btn" onclick="addToCart('${p.name}', ${p.price}, '${p.img}')">Add</button></div>`;
+            });
+        }
+
+        function addToCart(name, price, img) {
+            cart[name] ? cart[name].qty++ : cart[name] = { price, img, qty: 1 };
+            updateBadge();
+            toggleCart();
+        }
+
+        function updateBadge() {
+            let count = Object.values(cart).reduce((a, b) => a + b.qty, 0);
+            document.getElementById('cartBadge').innerText = count;
+        }
+
+        function renderCart() {
+            let cont = document.getElementById('cartItemsContainer');
+            let total = 0;
+            cont.innerHTML = '';
+            Object.keys(cart).forEach(name => {
+                let item = cart[name];
+                total += item.price * item.qty;
+                cont.innerHTML += `<div class="cart-item"><img src="${item.img}"><div>${name}<br>₹${item.price} x ${item.qty}</div></div>`;
+            });
+            document.getElementById('cartTotalDisplay').innerText = "₹" + total;
+        }
+
+        function checkout() {
+            let msg = "Order:\n";
+            Object.keys(cart).forEach(n => msg += `${cart[n].qty}x ${n}\n`);
+            window.open("https://wa.me/9188194996?text=" + encodeURIComponent(msg));
+        }
+
+        function handleSearch(e) { if(e.key === 'Enter') { openAllPerfumes(); toggleSearch(); } }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); else e.target.classList.remove('active'); });
+        }, { threshold: 0.6 });
+        document.querySelectorAll('.collection-card').forEach(c => observer.observe(c));
+    </script>
+</body>
+</html>
