@@ -17,7 +17,7 @@
         .marquee span::after { content: " • FREE TESTER WITH EVERY 50ML • EXTRAIT DE PARFUM • CRAFTED IN LAB • COMPLIMENTARY SHIPPING • "; padding-left: 10px; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         
-        /* --- HEADER (Side-by-Side Icons) --- */
+        /* --- HEADER --- */
         .header { position: sticky; top: 0; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(15px); display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; z-index: 999; border-bottom: 1px solid #111; margin-top: 35px; }
         .header-logo { font-family: 'Cinzel', serif; font-size: 1.6rem; color: #C4A661; text-transform: uppercase; letter-spacing: 5px; font-weight: 500; }
         .header-right { display: flex; gap: 20px; align-items: center; }
@@ -27,11 +27,13 @@
 
         /* --- HERO & PARALLAX --- */
         .parallax-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: url('1000165704.png') center/cover; z-index: -1; filter: brightness(0.6); }
-        .story-container { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; padding: 120px 20px 80px; background: linear-gradient(to bottom, rgba(5,5,5,0) 0%, rgba(5,5,5,0.7) 60%, rgba(5,5,5,1) 100%); }
-        .hero-text h1 { font-size: 2.5rem; letter-spacing: 6px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .story-container { position: relative; min-height: 75vh; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; padding: 40px 20px 40px; background: linear-gradient(to bottom, rgba(5,5,5,0) 0%, rgba(5,5,5,0.7) 35%, rgba(5,5,5,1) 100%); }
+        .hero-text h1 { font-size: 2.2rem; letter-spacing: 6px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); margin-bottom: 15px; }
+        .story-text { max-width: 700px; color: #bbb; line-height: 2; font-size: 0.9rem; font-weight: 300; letter-spacing: 0.8px; margin-top: 10px; }
+        .story-text b { color: #C4A661; font-weight: 400; letter-spacing: 1.5px; }
 
         /* --- COLLECTIONS --- */
-        .section { padding: 80px 0; max-width: 1200px; margin: auto; text-align: center; background-color: #050505; position: relative; z-index: 2; }
+        .section { padding: 40px 0 60px; max-width: 1200px; margin: auto; text-align: center; background-color: #050505; position: relative; z-index: 2; }
         .collection-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 0 20px 20px; scrollbar-width: none; scroll-behavior: smooth; }
         .collection-card { flex: 0 0 85%; scroll-snap-align: center; position: relative; cursor: pointer; overflow: hidden; background: #000; }
         .collection-card img { width: 100%; height: 380px; object-fit: cover; filter: grayscale(60%) brightness(0.3); transform: scale(0.95); transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
@@ -54,13 +56,12 @@
         .trust-item span { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1.5px; color: #888; line-height: 1.3; font-weight: 500; }
         @media(min-width: 768px) { .trust-banner { grid-template-columns: repeat(4, 1fr); } }
 
-        /* --- SIDEBAR (Category Only) --- */
+        /* --- SIDEBAR --- */
         .sidebar { position: fixed; top: 0; left: -100%; width: 85%; max-width: 300px; height: 100vh; background: #050505; z-index: 10001; transition: 0.5s; border-right: 1px solid #1a1a1a; padding: 60px 25px; box-sizing: border-box; }
         .sidebar.active { left: 0; }
         .sidebar-links a { display: block; color: #fff; text-decoration: none; font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 25px; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-        .sidebar-links a:hover { color: #C4A661; padding-left: 10px; }
 
-        /* --- OVERLAYS & MODALS --- */
+        /* --- OVERLAYS --- */
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 9999; overflow-y: auto; }
         .overlay-content { padding: 40px 25px 80px; max-width: 800px; margin: auto; }
         .cart-drawer { position: fixed; top: 0; right: -100%; width: 90%; max-width: 400px; height: 100vh; background: #050505; z-index: 10000; transition: 0.5s; border-left: 1px solid #1a1a1a; display: flex; flex-direction: column; }
@@ -106,8 +107,11 @@
     </div>
 
     <div class="story-container">
-        <div class="hero-text"><h1>Our Story</h1><p>Uncovering the Unknown</p></div>
-        <p class="story-text">Cactus Lab was born from a single desire: to uncover the unknown. Niche DNA with maximum projection.</p>
+        <div class="hero-text"><h1>Our Story</h1></div>
+        <p class="story-text">
+            Cactus Lab was envisioned for those who appreciate the deep <b>art and craft of perfume culture</b>. We recreate the narratives of <b>niche, designer, and artisanal</b> perfumery into olfactory signatures that belong to you.<br><br>
+            Each bottle is a meticulous pursuit of the original scent profile, engineered for <b>formidable performance</b> and unyielding character. High-end craft, refined for the modern age.
+        </p>
     </div>
 
     <div class="section">
@@ -123,6 +127,7 @@
         <div class="reviews-track">
             <div class="review-item"><span class="review-text">"Oceania smells like a luxury vacation. Performance is insane."</span><span class="review-author">— ARJUN M.</span></div>
             <div class="review-item"><span class="review-text">"Cactus Lab never misses. Most Wanted is my new signature."</span><span class="review-author">— ROHAN S.</span></div>
+            <div class="review-item"><span class="review-text">"The most realistic scent profile I've ever encountered."</span><span class="review-author">— ISHA K.</span></div>
             <div class="review-item"><span class="review-text">"Oceania smells like a luxury vacation. Performance is insane."</span><span class="review-author">— ARJUN M.</span></div>
             <div class="review-item"><span class="review-text">"Cactus Lab never misses. Most Wanted is my new signature."</span><span class="review-author">— ROHAN S.</span></div>
         </div>
@@ -150,7 +155,7 @@
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-col"><h4>At Cactus Lab</h4><a onclick="openInfo('about')">Our Story</a></div>
-            <div class="footer-col"><h4>Customer Care</h4><a onclick="openInfo('returns')">Return & Refund</a><a onclick="openInfo('contact')">Contact Us</a></div>
+            <div class="footer-col"><h4>Care</h4><a onclick="openInfo('returns')">Returns</a><a onclick="openInfo('contact')">Contact</a></div>
         </div>
         <div class="footer-bottom">&copy; 2026 CACTUS LAB PERFUMES. MUMBAI.</div>
     </footer>
@@ -176,7 +181,7 @@
 
     <script>
         const perfumes = { Summer: [{ name: 'Oceania', price: 1900, img: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400' }], Winter: [{ name: 'Most Wanted', price: 2400, img: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=400' }], Gourmand: [{ name: 'Amore Cafe', price: 1900, img: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400' }] };
-        const pages = { about: { title: "Our Story", content: "<h2>Crafted in Lab</h2><p>Cactus Lab creates extrait de parfum that lasts.</p>" }, returns: { title: "Returns", content: "<h2>Policies</h2><p>Report damages within 48h.</p>" }, contact: { title: "Contact", content: "<h2>Connect</h2><p>WhatsApp: +91 88194996</p>" } };
+        const pages = { about: { title: "Our Story", content: "<h2>Literature in Liquid</h2><p>Our craft is to bottle memory and emotion with unparalleled precision.</p>" }, returns: { title: "Returns", content: "<h2>Policies</h2><p>Damage reporting required within 48 hours.</p>" }, contact: { title: "Contact", content: "<h2>Connect</h2><p>WhatsApp: +91 88194996</p>" } };
         let cart = {};
 
         function pushState() { history.pushState({ overlay: true }, ""); }
@@ -193,7 +198,11 @@
         function addToCart(n, p, i) { cart[n] ? cart[n].qty++ : cart[n] = { price: p, img: i, qty: 1 }; updateBadge(); toggleCart(); }
         function updateBadge() { document.getElementById('cartBadge').innerText = Object.values(cart).reduce((a, b) => a + b.qty, 0); }
         function renderCart() { let c = document.getElementById('cartItemsContainer'); c.innerHTML = ''; Object.keys(cart).forEach(n => { c.innerHTML += `<div class="cart-item"><img src="${cart[n].img}"><div>${n}<br>₹${cart[n].price} x ${cart[n].qty}</div></div>`; }); }
-        function checkout() { window.open("https://wa.me/9188194996?text=Order Info..."); }
+        function checkout() { 
+            let msg = "Order:\n";
+            Object.keys(cart).forEach(n => msg += `${cart[n].qty}x ${n}\n`);
+            window.open("https://wa.me/9188194996?text=" + encodeURIComponent(msg)); 
+        }
         function handleSearch(e) { if(e.key === 'Enter') { openCategory('Summer'); } }
 
         const observer = new IntersectionObserver((entries) => {
@@ -203,4 +212,3 @@
     </script>
 </body>
 </html>
-            
